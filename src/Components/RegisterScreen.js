@@ -23,39 +23,39 @@ class RegisterScreenDumb extends Component {
 
     render() {
 
-        return <div>
-        <img src={logo}/>
+        return <div className="login-screen">
+        <img src={logo}
+        className="logo-img"/>
         <form onSubmit={(event) => {
             this.registerUser(event)
-        }}>
-        <p>Create a username</p>
+        }}
+        className="login-form">
+        <p>Create a username:</p>
         <input 
             placeholder='username'
             onChange={(event) => this.setState({username: event.target.value})}
             value={this.state.username}/>
-        <p>Enter your email</p>
+        <p>Enter your email:</p>
         <input 
             placeholder='email@planted.com'
             onChange={(event) => this.setState({email: event.target.value})}
             value={this.state.email}/>
-        <p>Create a password</p>
+        <p>Create a password:</p>
         <input
             type="password"
             placeholder='Password123'
             onChange={(event) => this.setState({password: event.target.value})}
             value={this.state.password}
         />
-        <p>Link to Avatar</p>
+        <p>Link to Avatar:</p>
         <input
             placeholder='Image URL'
             onChange={(event) => this.setState({avatar: event.target.value})}
             value={this.state.avatar}
         />
-                <div>
             <button type="submit">Submit</button>
-        </div>
         </form>
-        <div>
+        <div className="register">
             <p>Already Registered?</p>
             <Link to='/login'> Log In Here </Link>
         </div>

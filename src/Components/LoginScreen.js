@@ -32,13 +32,16 @@ class LoginScreenDumb extends Component {
 
     render() {
 
-        return <div>
-        <img src={logo}
+        return <div className="login-screen">
+        <img 
+        src={logo}
+        className="logo-img"
         />
         <form onSubmit={(event) => {
             this.loginUser(event)
-        }
-    }>
+        }}
+        className="login-form"
+        >
         <p >Email:</p>
         <input 
             placeholder='email@planted.com'
@@ -53,7 +56,7 @@ class LoginScreenDumb extends Component {
         />
             <button type="submit">Submit</button>
         </form>
-        <div>
+        <div className="register">
             <p >Not Registered?</p>
             <Link to="/register" > Create an account </Link>
         </div>

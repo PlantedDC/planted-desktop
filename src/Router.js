@@ -9,6 +9,7 @@ import HumidityScreen from './Components/HumidityScreen';
 import TemperatureScreen from './Components/TemperatureScreen';
 import SunlightScreen from './Components/SunlightScreen';
 import ProfileScreen from './Components/ProfileScreen';
+import TempChartContainerComponent from './Components/TempChartContainerComponent';
 
 
 let Router = () => 
@@ -24,6 +25,7 @@ let Router = () =>
             <Route path="/humidity" component={HumidityScreen} />
             <Route path="/sunlight" component={SunlightScreen} />
             <Route path="/profile" component={ProfileScreen} />
+            <Route path="/chart" component={TempChartContainerComponent} />
             </div>
     </HashRouter>
   </div>
