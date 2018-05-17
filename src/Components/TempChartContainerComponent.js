@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import './Chart.css';
+import {connect} from 'react-redux';
 
 
  const draw = (chartdata) => {
-        console.log('draw function ' + chartdata.currentUser.plantData[0]);
-        let data = chartdata.currentUser.plantData;
-
-        console.log('data in draw' + JSON.stringify(data));
+        // console.log('draw function ' + chartdata.currentUser.plantData[0]);
+        let data = chartdata
+        // .currentUser.plantData;
+        // console.log('data in draw' + JSON.stringify(data));
         var margin = {top: 20, right: 20, bottom: 30, left: 50},
             width = 400 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
@@ -120,27 +121,17 @@ let fetchData = () => {
 
 
 class TempChartContainerComponent extends Component {
-    
-    constructor(props) {
-        super(props);
-
-        // initialize data in state
-        this.state = {temperatureData : []}
-    };
 
     componentDidMount() {
-        fetchData().then(data => {
-            console.log(data);
-            this.setState({ temperatureData : data});
-        })
+        draw(this.props.plantData);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        // draw chart with D3
-        if (prevState !== this.state) {
-            draw(this.state.temperatureData.data);
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     // draw chart with D3
+    //     if (prevState !== this.state) {
+    //         draw(this.state.temperatureData.data);
+    //     }
+    // }
 
     render() {
         return (
@@ -151,4 +142,8 @@ class TempChartContainerComponent extends Component {
     }
 }
 
-export default TempChartContainerComponent;
+let mapStateToProps = (state) => {
+    return {plantData: state.plantData}
+  };
+
+export default connect(mapStateToProps)(TempChartContainerComponent);

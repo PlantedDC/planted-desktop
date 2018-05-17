@@ -3,10 +3,10 @@ import logo from './images/logo_planted.png';
 import {Link} from 'react-router-dom';
 
 let LandingPage = (props) =>
-    <div >
-        <img src={logo} />
+    <div className="landing-page">
+        <img src={logo} className="logo-img" />
 
-        <div>
+        <div className="landing-page-buttons">
         <Link to="/login" >Login</Link>
 
         <Link to="/register">Register</Link>
