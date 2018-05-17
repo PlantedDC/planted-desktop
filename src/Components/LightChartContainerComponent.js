@@ -18,14 +18,14 @@ import {connect} from 'react-redux';
         // define the line
         var valueline = d3.line()
             .x(function(d) { return x(d.created); })
-            .y(function(d) { return y(d.temp); });
+            .y(function(d) { return y(d.sun); });
 
         // appends the svg obgect to the body of the page
         // appends a 'group' element to 'svg'
         // moves the 'group' element to the top left margin
         let newWidth = width + margin.left + margin.right;
         let newHeight = height + margin.top + margin.bottom;
-        var svg = d3.select("#temperature")
+        var svg = d3.select("#light")
             .attr('preserveAspectRatio', 'xMinYMin meet')
             .attr('viewBox', '0 0 newWidth newHeight')
             .attr("width", newWidth)
@@ -36,10 +36,8 @@ import {connect} from 'react-redux';
 
         // format the data
         data.forEach(function(d) {
-            console.log('d in temp :: ' + JSON.stringify(d));
             d.created = parseTime(d.created);
-            d.temp = +d.temp;
-            console.log('temps ' + d.temp + ' :times ' + d.created);
+            d.sun = +d.sun;
         });
 
         // sort time ascending
@@ -50,7 +48,7 @@ import {connect} from 'react-redux';
         // Scale the range of the data
         x.domain(d3.extent(data, function(d) { return d.created; }));
         y.domain([0, d3.max(data, function(d) {
-            return Math.max(d.temp); })]);
+            return Math.max(d.sun); })]);
 
         // Add the valueline path.
         svg.append("path")
@@ -82,10 +80,10 @@ import {connect} from 'react-redux';
             .attr('x', 0 - (height / 2))
             .attr('dy', '1em')
             .style('text-anchor', 'middle')
-            .text('Temperature °C');
+            .text('Light');
     }
 
-class TempChartContainerComponent extends Component {
+class LightChartContainerComponent extends Component {
 
     componentDidMount() {
         draw(this.props.plantData);
@@ -94,7 +92,7 @@ class TempChartContainerComponent extends Component {
     render() {
         return (
             <div className="ChartContainer">
-                <svg id='temperature'></svg>
+                <svg id='light'></svg>
             </div>
         );
     }
@@ -104,4 +102,4 @@ let mapStateToProps = (state) => {
     return {plantData: state.plantData}
   };
 
-export default connect(mapStateToProps)(TempChartContainerComponent);
+export default connect(mapStateToProps)(LightChartContainerComponent);

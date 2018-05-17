@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 
 let DataDisplay = ({data}) => 
     <div>
-        <img src={plant} className="data-image"/>
+        <img src={plant} className="data-image" alt=""/>
         <div>
         <Moment format="YYYY-MM-DD HH:mm">{data.created}</Moment>
         <p>Temperature: {data.temp} °C</p>

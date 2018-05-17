@@ -35,7 +35,7 @@ class LoginScreenDumb extends Component {
         return <div className="login-screen">
         <img 
         src={logo}
-        className="logo-img"
+        className="logo-img" alt=""
         />
         <form onSubmit={(event) => {
             this.loginUser(event)

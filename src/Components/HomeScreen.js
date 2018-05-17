@@ -19,7 +19,7 @@ class HomeScreenComponent extends React.Component {
     let {plantData} = this.props;
 
     let DisplayDataOnScreen = () => {
-      let key = 0;
+      //let key = 0;
       if (plantData === null || plantData === undefined) {
         return <div><p>Loading...</p></div>
       } else {

@@ -12,7 +12,7 @@ class RegisterScreenDumb extends Component {
       }
 
     registerUser() {
-        let {navigation, dispatch} = this.props;
+        let { dispatch} = this.props;
         let {email, password, username, avatar} = this.state;
         submitNewUserInformation(email, password, username, avatar)
         .then(res => dispatch(updateUserObject(res)))
@@ -25,7 +25,7 @@ class RegisterScreenDumb extends Component {
 
         return <div className="login-screen">
         <img src={logo}
-        className="logo-img"/>
+        className="logo-img" alt=""/>
         <form onSubmit={(event) => {
             this.registerUser(event)
         }}
